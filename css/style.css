@@ -1,0 +1,243 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+p {
+    color: #454347;
+}
+    
+
+body {
+    background-color: #ECECEC;
+}
+
+.container {
+    text-align: center;
+    margin: 0 250px;
+}
+
+header {
+    padding: 0px;
+}
+
+#logoUnimine {
+    max-height: 141px;
+}
+
+#messageInsert {
+    margin-top: 32px;
+}
+
+h4{
+    text-align: left;
+}
+
+.shortlink {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 729px;
+    margin: auto;
+}
+
+.shortlink, 
+#convertLink {
+    padding: 15px 0;
+}
+
+#convertLink {
+    width: 618px;
+    border-radius: 10px;
+    border: 3px solid #F6A6A7;
+    height: 66px;
+    font-size: 24px;
+    padding: 16px 23px;
+}
+
+#formBusca {
+    max-width: 100%;
+}
+
+#shortner {
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+    background-color: #E60004;
+    border: 3px solid #E60004;
+    color: #ffffff;
+    font-size: 24px;
+    height: 66px;
+    margin: -1.5em;
+    cursor: pointer;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-top: 90px;
+    color: #454347;
+}
+
+.cards {
+    display: inline-block;
+    justify-content: center;
+}
+
+.card {
+    margin-top: 40px;
+    max-width: 768px;
+    padding: 17px 26px;
+    font-size: 24px;
+    text-align: justify;
+    background-color: #FFF;
+    box-shadow: 0 0 10px #CCC;
+    border-radius: 12px;
+    word-wrap: break-word;
+}
+ 
+.date {
+    font-size: 15px;
+    color: #c2c2c2;
+    margin-bottom: 18px;
+}
+
+#un1d3v {
+    font-weight: bold;
+    color: #f26139;
+}   
+
+/* Botão */
+.btn-url {
+    background-color: #198754;
+    border-color: #198754;
+    margin-right: 14px;
+}
+
+.btn-remove,
+.btn-load,
+.btn-copy {
+    background-color: #E60004;
+    border-color: #E60004;
+    margin-top: 20px;
+}
+
+.btn-copy {
+    margin: auto;
+}
+#loadMore{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    font-size: 22px;
+    color: #FFF;
+    display: inline-block;
+    padding: 10px 13px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+/* Icons */
+.fa-external-link-alt,
+.fa-trash-alt,
+.fa-plus,
+.fa-copy {
+    margin-right: 13px;
+    width: 16px;
+    height: 16px;
+}
+
+/** Response Error **/
+
+.box-response-fail {
+    background-color: white;
+    max-width: 768px;
+    height: 241px;
+    margin-top: 10px;
+    border: 5px dashed #F6A6A7;
+    border-radius: 3px;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-size: 36px;
+}
+
+.fa-frown-open {
+    margin-top: 20px;
+}
+
+/* Response Success */
+
+.box-response {
+    display: inline-block;
+    justify-content: center;
+    width: 768px;
+    height: 241px;
+    margin-bottom: 70px;
+}
+
+.box {
+    margin-top: 40px;
+    background-color: #FFF;
+    box-shadow: 0 0 10px #CCC;
+    border: 5px #F6A6A7 dashed;
+    border-radius: 12px;
+    padding: 15px 40px;
+    word-wrap: break-word;
+}
+
+.link-shortned {
+    font-size: 48px;
+    color: #E60004;
+    font-weight: 500;
+    text-decoration: underline;
+    margin-top: 30px;
+}
+
+.text-share {
+    font-size: 22px;
+    font-weight: bold;
+    color: #454347;
+    margin-left: 15px;
+    padding-right: 10px;
+}
+.socials-network {
+    max-width: 768px;
+}
+
+.sociais-network-icons {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-top: 46px;
+    margin-bottom: 40px;
+}
+
+.icon_border_red{
+    border-radius: 22px;
+    color: white;
+    background-color: #E60004;
+    width: 43px;
+    height: 43px;
+    text-align: center;
+    display: flex;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#icons {
+    display: flex;
+    width: 186px;
+    justify-content: space-between;
+}
+
+#icons i {
+    margin: auto;
+}
