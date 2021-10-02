@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <AlertCard/>
-    <Card/>
     <button id="loadMore" class="btn btn-load">
       <i class="fas fa-plus"></i>Carregar Mais
     </button>
@@ -10,13 +9,11 @@
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/Card.vue'
 import AlertCard from '@/components/AlertCard.vue';
 
 export default {
   name: 'Home',
   components: {
-    Card,
     AlertCard
   },
   data() {
