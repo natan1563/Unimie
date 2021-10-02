@@ -1,40 +1,45 @@
 <template>
-  <div>
-    <div class="cards">
-      <h4 class="title">Últimas URLs encurtadas por você</h4>
-      <div class="card" v-for="item in resource" :key="item.id">    
-        <small class="date">
-          <i class="far fa-calendar-minus"></i>{{ item.created_at | DateTime }}
-        </small>
-        <p>
-          {{ item.link }}
-        </p>
-        <div>
-          <button class="btn btn-url"><i class="fas fa-external-link-alt"></i>{{ urlFixa }}{{ item.hash }}</button>
-          <button class="btn btn-remove"><i class="far fa-trash-alt"></i>Remover</button>
-        </div>
-      </div>
+  <div class="card">    
+    <small class="date">
+      <i class="far fa-calendar-minus"></i>{{ created_at | DateTime }}
+    </small>
+    <p>
+      {{ link }}
+    </p>
+    <div>
+      <button class="btn btn-url"><i class="fas fa-external-link-alt"></i>{{ urlShort }}</button>
+      <button class="btn btn-remove"><i class="far fa-trash-alt"></i>Remover</button>
     </div>
   </div>
 </template>
 
 <script>
-import UrlService from '@/features/url/UrlService';
 
 export default {
   name: 'Card',
-  data() {
-    return {
-      urlFixa: 'https://unimine.com.br/',
-      urlServices: new UrlService(),
-      resource: [],
+  props: {
+    created_at: {
+      type: String,
+      required: true,
+    },
+    link: {
+      type: String,
+      required: true,
+    },
+    urlFixa: {
+      type: String,
+      required: true,
+    },
+    hash: {
+      type: String,
+      required: true,
     }
   },
-  created() {
-    this.urlServices.get().then((response) => {
-      this.resource = response;
-    });
-  },
+  computed: {
+    urlShort() {
+      return this.urlFixa + this.hash;
+    }
+  }
 }
 </script>
 

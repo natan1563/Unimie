@@ -8,13 +8,48 @@
       <input id="convertLink" type="text" placeholder="http://seu-link-enorme.com.br" />
       <button id="shortner" type="button"><i class="fas fa-cog"></i> <span>Encurtar</span></button>
     </div>
+    <div class="cards">
+      <h4 class="title">Últimas URLs encurtadas por vocês</h4>
+      <Card
+        v-for="item of resource"
+        :key="item.id"
+        :created_at="item.created_at"
+        urlFixa="https://unimine.com.br/"
+        :hash="item.hash"
+        :link="item.link"
+      />
     <router-view/>
+    </div>
     <footer>
       <p>Desenvolvido com todo amor e carinho por:</p>
       <p><span id="un1d3v">Un1d3v</span> - Nucleo de Desenvolvimento Unime (Lauro de Freitas)</p>
     </footer>
   </div>
 </template>
+
+<script>
+import UrlService from '@/features/url/UrlService';
+import Card from '@/components/Card';
+
+export default {
+  components: {
+    Card,
+  },
+  data() {
+    return {
+      urlFixa: 'https://unimine.com.br/',
+      urlServices: new UrlService(),
+      resource: [],
+    }
+  },
+  created() {
+    this.urlServices.get().then((response) => {
+      this.resource = response;
+      console.log(this.resource);
+    });
+  },
+}
+</script>
 
 <style>
 

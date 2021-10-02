@@ -10,13 +10,11 @@
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/Card.vue'
 import AlertCard from '@/components/AlertCard.vue';
 
 export default {
   name: 'Home',
   components: {
-    Card,
     AlertCard
   },
   data() {

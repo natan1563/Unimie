@@ -2,7 +2,7 @@
   <div class="box-response">
     <div class="box">  
       <p class="link-shortned">
-        http://unimine.com.br/xt451a
+        {{ urlShort }}
       </p>
       <div class="socials-network">
         <div class="sociais-network-icons">
@@ -22,7 +22,18 @@
 
 <script>
 export default {
-  name: "AlertCard"
+  name: "AlertCard",
+  data() {
+      return {
+          urlFixa: "https://unimine.com.br/",
+          hash: "xt451a"
+      }
+  },
+  computed: {
+      urlShort() {
+          return this.urlFixa + this.hash;
+      }
+  }
 }
 </script>
 
