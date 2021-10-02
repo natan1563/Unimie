@@ -6,7 +6,7 @@
     <p>
       {{ link }}
     </p>
-    <div>
+    <div class="btn-container">
       <button class="btn btn-url"><i class="fas fa-external-link-alt"></i>{{ urlShort }}</button>
       <button class="btn btn-remove"><i class="far fa-trash-alt"></i>Remover</button>
     </div>
@@ -43,21 +43,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .cards {
-  display: inline-block;
-  justify-content: center;
-
-  .title {
-    font-weight: bold;
-    font-size: 24px;
-    color: #454347;
-  }
-
   .card {
     margin-top: 40px;
-    max-width: 768px;
     padding: 17px 26px;
     font-size: 24px;
     text-align: justify;
@@ -66,22 +56,30 @@ export default {
     border-radius: 12px;
     word-wrap: break-word;
 
+    p {
+      margin: 25px 0;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: row;
+
+      .btn-url {
+        background-color: #198754;
+        border-color: #198754;
+        margin-right: 14px;
+      }
+
+      .btn-remove {
+        background-color: #E60004;
+        border-color: #E60004;
+      }
+    }
+
     .date {
-      font-size: 15px;
+      font-size: 18px;
       color: #c2c2c2;
       margin-bottom: 18px;
-    }
-
-    .btn-url {
-      background-color: #198754;
-      border-color: #198754;
-      margin-right: 14px;
-    }
-
-    .btn-remove {
-      background-color: #E60004;
-      border-color: #E60004;
-      margin-top: 20px;
     }
   }
 }
@@ -105,6 +103,24 @@ export default {
   margin-right: 13px;
   width: 16px;
   height: 16px;
+}
+
+@media (max-width: 660px) {
+  .cards {
+    .card {
+      .btn-container {
+        flex-direction: column;
+
+        .btn-url {
+          margin-right: 0;
+        }
+
+        .btn-remove {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
 }
 
 </style>

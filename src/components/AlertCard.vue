@@ -24,105 +24,105 @@
 export default {
   name: "AlertCard",
   data() {
-      return {
-          urlFixa: "https://unimine.com.br/",
-          hash: "xt451a"
-      }
+    return {
+      urlFixa: "https://unimine.com.br/",
+      hash: "xt451a"
+    }
   },
   computed: {
-      urlShort() {
-          return this.urlFixa + this.hash;
-      }
+    urlShort() {
+      return this.urlFixa + this.hash;
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .box {
-    margin-top: 40px;
-    background-color: #FFF;
-    box-shadow: 0 0 10px #CCC;
-    border: 5px #F6A6A7 dashed;
-    border-radius: 12px;
-    padding: 15px 40px;
-    word-wrap: break-word;
+  margin-top: 40px;
+  background-color: #FFF;
+  box-shadow: 0 0 10px #CCC;
+  border: 5px #F6A6A7 dashed;
+  border-radius: 12px;
+  padding: 15px 40px;
+  word-wrap: break-word;
 }
 
 .box-response {
-    display: inline-block;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 70px;
+  display: inline-block;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 70px;
 }
 
 .link-shortned {
-    font-size: 48px;
-    color: #E60004;
-    font-weight: 500;
-    text-decoration: underline;
-    margin-top: 30px;
+  font-size: 48px;
+  color: #E60004;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-top: 30px;
 }
 
 .socials-network {
-    max-width: 768px;
+  max-width: 768px;
 }
 
 .sociais-network-icons {
-    display: flex;
-    align-items: center;
-    margin: auto;
-    margin-top: 46px;
-    margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 46px;
+  margin-bottom: 40px;
 }
 
 .text-share {
-    font-size: 22px;
-    font-weight: bold;
-    color: #454347;
-    margin-left: 15px;
-    padding-right: 10px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #454347;
+  margin-left: 15px;
+  padding-right: 10px;
 }
 
 .btn {
-    font-size: 22px;
-    color: #FFF;
-    display: inline-block;
-    padding: 10px 13px;
-    font-weight: 500;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 8px;
+  font-size: 22px;
+  color: #FFF;
+  display: inline-block;
+  padding: 10px 13px;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 8px;
 }
 
 .btn-copy {
-    background-color: #E60004;
-    border-color: #E60004;
-    margin-top: 20px;
+  background-color: #E60004;
+  border-color: #E60004;
+  margin-top: 20px;
 }
 
 .btn-copy {
-    margin: auto;
+  margin: auto;
 }
 
 .icon_border_red{
-    border-radius: 22px;
-    color: white;
-    background-color: #E60004;
-    width: 43px;
-    height: 43px;
-    text-align: center;
-    display: flex;
-    vertical-align: middle;
-    cursor: pointer;
+  border-radius: 22px;
+  color: white;
+  background-color: #E60004;
+  width: 43px;
+  height: 43px;
+  text-align: center;
+  display: flex;
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 #icons {
-    display: flex;
-    width: 186px;
-    justify-content: space-between;
+  display: flex;
+  width: 186px;
+  justify-content: space-between;
 }
 
 #icons i {
