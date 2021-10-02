@@ -1,23 +1,23 @@
 <template>
-   <div class="box-response">
-         <div class="box">  
-         <p class="link-shortned">
-            http://unimine.com.br/xt451a
-         </p>
-         <div class="socials-network">
-               <div class="sociais-network-icons">
-                  <p class="text-share">COMPARTILHAR:</p>
-                  <div id="icons">
-                     <div class="icon_border_red"><i class="fab fa-whatsapp "></i></div>
-                     <div class="icon_border_red"><i class="fab fa-twitter "></i></div>
-                     <div class="icon_border_red"><i class="fab fa-facebook-f "></i></div>
-                     <div class="icon_border_red"><i class="fab fa-telegram-plane "></i></div>
-                  </div>
-                  <button class="btn btn-copy"><i class="far fa-copy"></i>Copiar</button>
-            </div>
-         </div>
-         </div>
+  <div class="box-response">
+    <div class="box">  
+      <p class="link-shortned">
+        http://unimine.com.br/xt451a
+      </p>
+      <div class="socials-network">
+        <div class="sociais-network-icons">
+          <p class="text-share">COMPARTILHAR:</p>
+          <div id="icons">
+            <div class="icon_border_red"><i class="fab fa-whatsapp "></i></div>
+            <div class="icon_border_red"><i class="fab fa-twitter "></i></div>
+            <div class="icon_border_red"><i class="fab fa-facebook-f "></i></div>
+            <div class="icon_border_red"><i class="fab fa-telegram-plane "></i></div>
+          </div>
+          <button class="btn btn-copy"><i class="far fa-copy"></i>Copiar</button>
+        </div>
       </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 
 .box {
     margin-top: 40px;
@@ -41,8 +41,7 @@ export default {
 .box-response {
     display: inline-block;
     justify-content: center;
-    width: 768px;
-    height: 241px;
+    width: 100%;
     margin-bottom: 70px;
 }
 
@@ -116,6 +115,26 @@ export default {
 }
 
 #icons i {
-    margin: auto;
+  margin: auto;
 }
+
+@media (max-width: 830px) {
+  .box-response {
+    .link-shortned {
+      font-size: 36px;
+    }
+  }
+
+  .box-response {
+    .sociais-network-icons {
+      flex-direction: column;
+
+      .text-share,
+      #icons {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}
+
 </style>

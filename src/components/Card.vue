@@ -38,13 +38,19 @@ export default {
 }
 </script>
 
-<style>
-.cards {
-    display: inline-block;
-    justify-content: center;
-}
+<style lang="scss">
 
-.card {
+.cards {
+  display: inline-block;
+  justify-content: center;
+
+  .title {
+    font-weight: bold;
+    font-size: 24px;
+    color: #454347;
+  }
+
+  .card {
     margin-top: 40px;
     max-width: 768px;
     padding: 17px 26px;
@@ -54,31 +60,25 @@ export default {
     box-shadow: 0 0 10px #CCC;
     border-radius: 12px;
     word-wrap: break-word;
-}
 
-.date {
-  font-size: 15px;
-  color: #c2c2c2;
-  margin-bottom: 18px;
-}
+    .date {
+      font-size: 15px;
+      color: #c2c2c2;
+      margin-bottom: 18px;
+    }
 
-.title {
-    font-weight: bold;
-    font-size: 24px;
-    margin-top: 90px;
-    color: #454347;
-}
+    .btn-url {
+      background-color: #198754;
+      border-color: #198754;
+      margin-right: 14px;
+    }
 
-.btn-url {
-  background-color: #198754;
-  border-color: #198754;
-  margin-right: 14px;
-}
-
-.btn-remove {
-  background-color: #E60004;
-  border-color: #E60004;
-  margin-top: 20px;
+    .btn-remove {
+      background-color: #E60004;
+      border-color: #E60004;
+      margin-top: 20px;
+    }
+  }
 }
 
 .btn {
@@ -97,8 +97,9 @@ export default {
 .fa-external-link-alt,
 .fa-trash-alt,
 .fa-calendar-minus {
-    margin-right: 13px;
-    width: 16px;
-    height: 16px;
+  margin-right: 13px;
+  width: 16px;
+  height: 16px;
 }
+
 </style>

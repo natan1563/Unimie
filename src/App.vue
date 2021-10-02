@@ -34,8 +34,11 @@ body {
 }
 
 .container {
+  width: 100%;
+  max-width: 828px;
   text-align: center;
-  margin: 0 250px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
 header {
@@ -83,7 +86,7 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  max-width: 729px;
+  width: 100%;
   margin: auto;
 }
 
@@ -93,16 +96,15 @@ header {
 }
 
 #convertLink {
-  width: 618px;
-  border-radius: 10px;
+  width: 1%;
+  min-width: 0;
+  flex: 1 1 auto;
+  border-radius: 10px 0 0 10px;
   border: 3px solid #F6A6A7;
+  border-right: none;
   height: 66px;
   font-size: 24px;
   padding: 16px 23px;
-}
-
-#formBusca {
-  max-width: 100%;
 }
 
 #shortner {
@@ -113,7 +115,6 @@ header {
   color: #ffffff;
   font-size: 24px;
   height: 66px;
-  margin: -1.5em;
   cursor: pointer;
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <AlertCard/>
-    <Card/>
+    <AlertCard />
+    <Card />
     <button id="loadMore" class="btn btn-load">
       <i class="fas fa-plus"></i>Carregar Mais
     </button>
