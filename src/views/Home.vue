@@ -102,8 +102,8 @@ export default {
           throw new Error(promise.data.message);
         }
         
-        this.newLink.hash = promise.data.data;
-        this.newLink.created_at = promise.data.created_at;
+        this.newLink.hash = promise.data.data.hash;
+        this.newLink.created_at = promise.data.data.created_at;
         this.lastHash = this.newLink.hash;
         this.ok = true;
         this.fail = false;
