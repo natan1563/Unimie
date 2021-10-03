@@ -52,6 +52,7 @@ export default class UrlService {
     links.forEach((element, index) => {
       if(element.link === link) {
         links.splice(index, 1);
+        localStorage.setItem('links', JSON.stringify(links));
         Vue.toasted.success(`Link ${element.link} deletado.`);
       }
     })
