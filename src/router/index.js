@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import DateTime from '../filters/DateTime'
 import Toasted from 'vue-toasted';
 import Clipboard from 'v-clipboard'
+import Redirect from '@/views/Redirect'
 
 Vue.use(VueRouter)
 Vue.use(Toasted, {
@@ -18,6 +19,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/:token',
+    name: 'Redirect',
+    component: Redirect
   }
 ]
 

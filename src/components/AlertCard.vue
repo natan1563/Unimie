@@ -67,7 +67,7 @@ export default {
   },
   computed: {
     urlShort() {
-      return this.urlFixa + this.hash;
+      return `${this.urlFixa}/${this.hash}`;
     },
     urlWhatsapp() {
       return this.whatsapp + this.urlShort;

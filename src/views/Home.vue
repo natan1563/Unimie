@@ -54,7 +54,7 @@ export default {
   },
   data() {
     return {
-      urlFixa: 'https://unimine.com.br/',
+      urlFixa: process.env.VUE_APP_BASE_URL,
       whatsapp: 'whatsapp://send?text=',
       twitter: 'https://twitter.com/intent/tweet?text=',
       facebook: 'https://www.facebook.com/sharer/sharer.php?u=',

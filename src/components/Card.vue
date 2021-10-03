@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     urlShort() {
-      return this.urlFixa + this.hash;
+      return `${this.urlFixa}/${this.hash}`;
     }
   },
   data() {
