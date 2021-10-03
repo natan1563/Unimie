@@ -5,7 +5,7 @@
       <p id="messageInsert">Insira sua Url que a encurtaremos para você :)</p>
     </header>
 
-    <router-view/>
+    <router-view class="content"/>
 
     <footer>
       <p>Desenvolvido com todo amor e carinho por:</p>
@@ -13,6 +13,23 @@
     </footer>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      url: 'https://api.ipify.org?format=json'
+    }
+  },
+  mounted() {
+    axios.get(this.url).then(response => {
+      this.results = response.data;
+    })
+  }
+}
+</script>
 
 <style>
 
@@ -34,9 +51,16 @@ body {
 .container {
   width: 100%;
   max-width: 828px;
+  height: 100vh;
   text-align: center;
   margin: 0 auto;
   padding: 0 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
 }
 
 header {
@@ -44,6 +68,7 @@ header {
 }
 
 #logoUnimine {
+  margin-top: 10px;
   max-height: 141px;
 }
 
@@ -87,6 +112,8 @@ header {
 }
 
 footer {
-  margin-bottom: 20px;
+  flex-shrink: 0;
+  padding: 20px;
+  text-align: center;
 }
 </style>

@@ -2,8 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import DateTime from '../filters/DateTime'
+import Toasted from 'vue-toasted';
+import Clipboard from 'v-clipboard'
 
 Vue.use(VueRouter)
+Vue.use(Toasted, {
+  duration: 5000
+})
+Vue.use(Clipboard)
 
 Vue.filter('DateTime', DateTime);
 

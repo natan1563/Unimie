@@ -1,19 +1,26 @@
 <template>
   <div class="box-response">
     <div class="box">  
-      <p class="link-shortned">
-        {{ urlShort }}
+      <p>
+        <a class="link-shortned" :href="urlShort">{{ urlShort }}</a>
       </p>
       <div class="socials-network">
         <div class="sociais-network-icons">
           <p class="text-share">COMPARTILHAR:</p>
           <div id="icons">
-            <div class="icon_border_red"><i class="fab fa-whatsapp "></i></div>
-            <div class="icon_border_red"><i class="fab fa-twitter "></i></div>
-            <div class="icon_border_red"><i class="fab fa-facebook-f "></i></div>
-            <div class="icon_border_red"><i class="fab fa-telegram-plane "></i></div>
+            <a class="icon_border_red" :href="urlWhatsapp"><i class="fab fa-whatsapp "></i></a>
+            <a class="icon_border_red" :href="urlTwitter"><i class="fab fa-twitter "></i></a>
+            <a class="icon_border_red" :href="urlFacebook"><i class="fab fa-facebook-f "></i></a>
+            <a class="icon_border_red" :href="urlTelegram"><i class="fab fa-telegram-plane "></i></a>
           </div>
-          <button class="btn btn-copy"><i class="far fa-copy"></i>Copiar</button>
+          <button
+            class="btn btn-copy"
+            v-clipboard="() => urlShort"
+            v-clipboard:success="clipboardSuccessHandler"
+            v-clipboard:error="clipboardErrorHandler"
+          >
+            <i class="far fa-copy"></i><span class="text-copy">Copiar</span>
+          </button>
         </div>
       </div>
     </div>
@@ -23,15 +30,56 @@
 <script>
 export default {
   name: "AlertCard",
-  data() {
-    return {
-      urlFixa: "https://unimine.com.br/",
-      hash: "xt451a"
+  props: {
+    urlFixa: {
+      type: String,
+      required: true,
+    },
+    hash: {
+      type: String,
+      required: true,
+    },
+    whatsapp: {
+      type: String,
+      required: true,
+    },
+    twitter: {
+      type: String,
+      required: true,
+    },
+    facebook: {
+      type: String,
+      required: true,
+    },
+    telegram: {
+      type: String,
+      required: true,
+    }
+  },
+   methods: {
+    clipboardSuccessHandler() {
+      this.$toasted.success("Copiado com sucesso");
+    },
+ 
+    clipboardErrorHandler() {
+      this.$toasted.error("Não foi possível copiar, tente novamente");
     }
   },
   computed: {
     urlShort() {
       return this.urlFixa + this.hash;
+    },
+    urlWhatsapp() {
+      return this.whatsapp + this.urlShort;
+    },
+    urlTwitter() {
+      return this.twitter + this.urlShort;
+    },
+    urlFacebook() {
+      return this.facebook + this.urlShort;
+    },
+    urlTelegram(){
+      return this.telegram + this.urlShort;
     }
   }
 }
@@ -53,7 +101,6 @@ export default {
   display: inline-block;
   justify-content: center;
   width: 100%;
-  margin-bottom: 70px;
 }
 
 .link-shortned {
@@ -117,6 +164,7 @@ export default {
   display: flex;
   vertical-align: middle;
   cursor: pointer;
+  text-decoration: none;
 }
 
 #icons {
@@ -127,6 +175,10 @@ export default {
 
 #icons i {
   margin: auto;
+}
+
+.text-copy {
+  margin-left: 10px;
 }
 
 @media (max-width: 830px) {
@@ -146,6 +198,7 @@ export default {
       }
     }
   }
+  
 }
 
 </style>

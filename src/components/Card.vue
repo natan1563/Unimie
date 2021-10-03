@@ -4,23 +4,24 @@
       <i class="far fa-calendar-minus"></i>{{ created_at | DateTime }}
     </small>
     <p>
-      {{ link }}
+      <a :href="link">{{ link }}</a>
     </p>
     <div class="btn-container">
-      <button class="btn btn-url"><i class="fas fa-external-link-alt"></i>{{ urlShort }}</button>
-      <button class="btn btn-remove"><i class="far fa-trash-alt"></i>Remover</button>
+      <a class="btn btn-url" :href="urlShort"><i class="fas fa-external-link-alt"></i>{{ urlShort }}</a>
+      <button class="btn btn-remove" @click="urlService.deleteLink(links, link)"><i class="far fa-trash-alt"></i>Remover</button>
     </div>
   </div>
 </template>
 
 <script>
+import UrlService from '@/features/url/UrlService';
 
 export default {
   name: 'Card',
   props: {
     created_at: {
       type: String,
-      required: true,
+      // required: true,
     },
     link: {
       type: String,
@@ -33,11 +34,19 @@ export default {
     hash: {
       type: String,
       required: true,
+    },
+    links: {
+      type: Array
     }
   },
   computed: {
     urlShort() {
       return this.urlFixa + this.hash;
+    }
+  },
+  data() {
+    return {
+      urlService: new UrlService()
     }
   }
 }
@@ -58,6 +67,10 @@ export default {
 
     p {
       margin: 25px 0;
+      a {
+        text-decoration: none;
+        color: #454347;
+      }
     }
 
     .btn-container {
