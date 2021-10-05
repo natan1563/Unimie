@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="shortlink">
-      <input id="convertLink" type="text" v-model="newLink.link" placeholder="http://seu-link-enorme.com.br" />
+      <input id="convertLink" type="text" v-model="bigUrl" placeholder="http://seu-link-enorme.com.br" />
       <button id="shortner" type="button" @click="createNewLink()"><i class="fas fa-cog"></i> <span>Encurtar</span></button>
     </div>
 
     <AlertCard 
-      v-if="ok"
-      :hash="lastHash"
+      v-if="!hasError && newLink.hasOwnProperty('hash')"
+      :hash="newLink.hash"
       :urlFixa="urlFixa"
       :whatsapp="whatsapp"
       :twitter="twitter"
@@ -16,22 +16,21 @@
     />
 
     <AlertCardFail
-      v-if="fail"
+      v-if="hasError"
     />
     
-    <div class="cards" v-if="links.length > 0">
+    <div class="cards" v-if="showing.length > 0">
       <h4 class="title">Últimas URLs encurtadas por vocês</h4>
       <Card
-        v-for="item of links"
+        v-for="item of showing"
         :key="item.id"
         :created_at="item.created_at"
         :urlFixa="urlFixa"
-        :hash="item.hash"
-        :link="item.link"
-        :links="links"
+        :linkItem="item"
+        v-on:deleted="mountList"
       />
       
-      <button v-if="verifyLoadingMore" id="loadMore" class="btn btn-load" @click="carregarMais">
+      <button v-if="verifyLoadingMore" id="loadMore" class="btn btn-load" @click="loadMore">
         <i class="fas fa-plus"></i>Carregar Mais
       </button>
 
@@ -40,9 +39,10 @@
 </template>
 
 <script>
-import UrlService from '@/features/url/UrlService';
-import AlertCard from '@/components/AlertCard.vue';
-import AlertCardFail from '@/components/AlertCardFail.vue';
+import UrlApiService from '@/services/UrlApiService'
+import UrlLocalStorageService from '@/services/UrlLocalStorageService'
+import AlertCard from '@/components/AlertCard.vue'
+import AlertCardFail from '@/components/AlertCardFail.vue'
 import Card from '@/components/Card'
 
 export default {
@@ -59,71 +59,58 @@ export default {
       twitter: 'https://twitter.com/intent/tweet?text=',
       facebook: 'https://www.facebook.com/sharer/sharer.php?u=',
       telegram: 'https://t.me/share/url?url=',
-      lastHash: '',
-      urlServices: new UrlService(),
+      bigUrl: '',
+      newLink: {},
+      hasError: false,
+      urlApiService: new UrlApiService(),
+      urlLocalStorageService: new UrlLocalStorageService(),
       links: [],
-      testLink: [],
-      newLink: {
-        link: "",
-        hash: "",
-        created_at: ""
-      },
-      error: '',
-      ok: false,
-      fail: false
+      showing: []
     }
   },
-   mounted() {
-    this.links = this.urlServices.getLinks();
+  mounted() {
+    this.mountList()
   },
 
   computed: {
     verifyLoadingMore() {
-      return !(this.links.length == JSON.parse(localStorage.getItem('links')).length);
+      return !(this.showing.length === this.links.length);
     }
   },
   methods: {
-    async createNewLink() {
-      if (!this.newLink) {
-        return;
-      }
-
-      try {
-        let promise = null;
-        promise = this.urlServices.postApi(this.newLink);
-        promise = await promise.then(response => response);
-        if(!promise)
-            throw new Error("Opa, estamos fora do ar, volte mais tarde :)");
-
-        if(promise.status !== 201) {
-          this.fail = true;
-          this.ok = false;
-
-          throw new Error(promise.data.message);
-        }
-        
-        this.newLink.hash = promise.data.data.hash;
-        this.newLink.created_at = promise.data.data.created_at;
-        this.lastHash = this.newLink.hash;
-        this.ok = true;
-        this.fail = false;
-        this.urlServices.deleteLinkDuplicated(this.links, this.newLink);
-        this.urlServices.post(this.newLink, this.links);
-        this.$toasted.success(promise.data.message);
-        
-      } catch (e) {
-        this.$toasted.error(e);
-      }
-
-      this.newLink = {
-        link: '',
-        hash: ''
-      }
+    mountList() {
+      this.urlLocalStorageService.getPaginate(5).then(data => this.showing = data) 
+      this.urlLocalStorageService.getAll().then(data => this.links = data) 
     },
 
-    carregarMais() {
-      const newLinks = (this.links.length + 5);
-      this.links = this.urlServices.getLinks(newLinks);
+    async createNewLink() {
+      this.urlApiService.post({
+        'link': this.bigUrl
+      }).then(response => {
+        this.newLink = response.data.data
+        this.bigUrl = ''
+
+        /**
+         * Insere o novo link no Array e salva no Localstorage
+         * Caso o hash já exista, ignora...
+         */
+        const hashAlreadyExists = this.links.find(link => link.hash === this.newLink.hash)
+
+        if (!hashAlreadyExists) {
+          this.links.push(this.newLink)
+          this.urlLocalStorageService.save(this.links)
+          this.urlLocalStorageService.getPaginate(5).then(data => this.showing = data) 
+          this.urlLocalStorageService.getAll().then(data => this.links = data) 
+        }
+
+        this.hasError = false
+      }).catch(() => {
+        this.hasError = true
+      })
+    },
+
+    loadMore() {
+      this.urlLocalStorageService.getPaginate(this.showing.length + 5).then(data => this.showing = data) 
     }
   }
 }

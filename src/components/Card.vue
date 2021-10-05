@@ -4,17 +4,17 @@
       <i class="far fa-calendar-minus"></i>{{ created_at | DateTime }}
     </small>
     <p>
-      <a :href="link">{{ link }}</a>
+      <a :href="linkItem.link">{{ linkItem.link }}</a>
     </p>
     <div class="btn-container">
       <a class="btn btn-url" :href="urlShort"><i class="fas fa-external-link-alt"></i>{{ urlShort }}</a>
-      <button class="btn btn-remove" @click="urlService.deleteLink(links, link)"><i class="far fa-trash-alt"></i>Remover</button>
+      <button class="btn btn-remove" @click="removeItem(linkItem)"><i class="far fa-trash-alt"></i>Remover</button>
     </div>
   </div>
 </template>
 
 <script>
-import UrlService from '@/features/url/UrlService';
+import UrlLocalStorageService from '@/services/UrlLocalStorageService'
 
 export default {
   name: 'Card',
@@ -23,30 +23,30 @@ export default {
       type: String,
       // required: true,
     },
-    link: {
-      type: String,
+    linkItem: {
+      type: Object,
       required: true,
     },
     urlFixa: {
       type: String,
       required: true,
-    },
-    hash: {
-      type: String,
-      required: true,
-    },
-    links: {
-      type: Array
     }
   },
   computed: {
     urlShort() {
-      return `${this.urlFixa}/${this.hash}`;
+      return `${this.urlFixa}/${this.linkItem.hash}`;
     }
   },
   data() {
     return {
-      urlService: new UrlService()
+      urlLocalStorageService: new UrlLocalStorageService()
+    }
+  },
+  methods: {
+    async removeItem(linkItem) {
+      this.urlLocalStorageService.removeItem(linkItem).then(() => {
+        this.$emit('deleted')
+      })
     }
   }
 }
