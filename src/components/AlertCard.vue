@@ -128,7 +128,6 @@ export default {
   font-size: 22px;
   font-weight: bold;
   color: #454347;
-  margin-left: 15px;
   padding-right: 10px;
 }
 
