@@ -8,6 +8,12 @@
     <router-view class="content"/>
 
     <footer>
+      <cookie-law theme="blood-orange" buttonText="Continuar e fechar">
+        <div slot="message">
+          A gente usa cookies para personalizar anúncios e melhorar a sua experiência no site. 
+          Ao continuar navegando, você concorda com a nossa <strong>Política de Privacidade</strong>.
+        </div>
+      </cookie-law>
       <p>Desenvolvido com todo amor e carinho por:</p>
       <p><span id="un1d3v">Un1d3v</span> - Nucleo de Desenvolvimento Unime (Lauro de Freitas)</p>
     </footer>
@@ -16,8 +22,10 @@
 
 <script>
 import axios from 'axios';
+import CookieLaw from 'vue-cookie-law'
 
 export default {
+  components: { CookieLaw },
   data() {
     return {
       url: 'https://api.ipify.org?format=json'
@@ -115,5 +123,9 @@ footer {
   flex-shrink: 0;
   padding: 20px;
   text-align: center;
+}
+
+footer cookie-law {
+  text-align: justify;
 }
 </style>
