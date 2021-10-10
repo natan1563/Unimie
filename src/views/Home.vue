@@ -84,6 +84,10 @@ export default {
     },
 
     async createNewLink() {
+      if(this.bigUrl.indexOf('http') === -1 || this.bigUrl.indexOf('https') === -1) {
+        this.bigUrl = 'http://' + this.bigUrl;
+      }
+
       this.urlApiService.post({
         'link': this.bigUrl
       }).then(response => {
@@ -94,7 +98,6 @@ export default {
          * Insere o novo link no Array e salva no Localstorage
          * Caso o hash já exista, ignora...
          */
-        console.log(this.links.find(link => link.hash === this.newLink.hash))
         const hashAlreadyExists = this.links.find(link => link.hash === this.newLink.hash)
 
         if (!hashAlreadyExists) {
