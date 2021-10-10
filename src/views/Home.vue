@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="shortlink">
-      <input id="convertLink" type="text" v-model="bigUrl" placeholder="http://seu-link-enorme.com.br" />
+      <input id="convertLink" type="text" v-on:keyup.enter="createNewLink()" v-model="bigUrl" placeholder="http://seu-link-enorme.com.br" />
       <button id="shortner" type="button" @click="createNewLink()"><i class="fas fa-cog"></i> <span>Encurtar</span></button>
     </div>
 
@@ -94,6 +94,7 @@ export default {
          * Insere o novo link no Array e salva no Localstorage
          * Caso o hash já exista, ignora...
          */
+        console.log(this.links.find(link => link.hash === this.newLink.hash))
         const hashAlreadyExists = this.links.find(link => link.hash === this.newLink.hash)
 
         if (!hashAlreadyExists) {
