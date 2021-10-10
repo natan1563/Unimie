@@ -13,15 +13,15 @@
             <a class="icon_border_red" :href="urlFacebook"><i class="fab fa-facebook-f "></i></a>
             <a class="icon_border_red" :href="urlTelegram"><i class="fab fa-telegram-plane "></i></a>
           </div>
-          <button
-            class="btn btn-copy"
-            v-clipboard="() => urlShort"
-            v-clipboard:success="clipboardSuccessHandler"
-            v-clipboard:error="clipboardErrorHandler"
-          >
-            <i class="far fa-copy"></i><span class="text-copy">Copiar</span>
-          </button>
         </div>
+        <button
+          class="btn btn-copy"
+          v-clipboard="() => urlShort"
+          v-clipboard:success="clipboardSuccessHandler"
+          v-clipboard:error="clipboardErrorHandler"
+        >
+          <i class="far fa-copy"></i><span class="text-copy">Copiar</span>
+        </button>
       </div>
     </div>
   </div>
@@ -113,12 +113,13 @@ export default {
 
 .socials-network {
   max-width: 768px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .sociais-network-icons {
   display: flex;
   align-items: center;
-  margin: auto;
   margin-top: 46px;
   margin-bottom: 40px;
 }
@@ -151,7 +152,7 @@ export default {
 }
 
 .btn-copy {
-  margin: auto;
+  margin: auto 0;
 }
 
 .icon_border_red{
@@ -191,12 +192,22 @@ export default {
   .box-response {
     .sociais-network-icons {
       flex-direction: column;
+      margin-bottom: 20px;
 
       .text-share,
       #icons {
         margin-bottom: 15px;
       }
     }
+  }
+
+  .socials-network {
+    flex-direction: column;
+  }
+
+  .btn-copy {
+    margin: auto;
+    margin-bottom: 40px;
   }
   
 }
