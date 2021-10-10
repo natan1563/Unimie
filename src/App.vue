@@ -1,7 +1,9 @@
 <template>
   <div id="app" class="container">
     <header>
-      <img id="logoUnimine" src="@/assets/logo.png" alt="Logo Unimine">
+      <router-link to="/">
+        <img id="logoUnimine" src="@/assets/logo.png" alt="Logo Unimine">
+      </router-link>
       <p id="messageInsert">Insira sua Url que a encurtaremos para você :)</p>
     </header>
 
