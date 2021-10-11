@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="privacyPolicy">
         <h1>
             Políticas de Privacidade
         </h1>
@@ -22,12 +22,12 @@ export default {
 </script>
 
 <style>
-h1 {
+.privacyPolicy h1 {
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
-p {
+.privacyPolicy p {
     margin-top: 15px;
     text-align: justify;
 }
