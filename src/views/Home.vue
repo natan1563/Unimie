@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p id="messageInsert">Insira sua Url que a encurtaremos <span>para você :)</span></p>
     <div class="shortlink">
       <input id="convertLink" type="text" v-on:keyup.enter="createNewLink()" v-model="bigUrl" placeholder="http://seu-link-enorme.com.br" />
       <button id="shortner" type="button" @click="createNewLink()"><i class="fas fa-cog"></i> <span>Encurtar</span></button>
@@ -84,9 +85,10 @@ export default {
     },
 
     async createNewLink() {
-      if(this.bigUrl.indexOf('http') === -1 || this.bigUrl.indexOf('https') === -1) {
+      if(this.bigUrl.indexOf('http') === -1) {
         this.bigUrl = 'http://' + this.bigUrl;
       }
+      
 
       this.urlApiService.post({
         'link': this.bigUrl
@@ -164,6 +166,13 @@ export default {
   cursor: pointer;
 }
 
+#messageInsert {
+  margin-top: 32px;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 #loadMore {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -203,6 +212,7 @@ export default {
     width: 100%;
     border: 3px solid #F6A6A7;
     border-radius: 10px;
+    font-size: 16px;
   }
 
   #shortner {
@@ -211,4 +221,10 @@ export default {
     left: 0;
   }
 }
+
+@media (max-width: 576px) {
+    #messageInsert span {
+      white-space: pre;
+    }
+  }
 </style>

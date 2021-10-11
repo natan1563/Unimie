@@ -5,6 +5,7 @@ import DateTime from '../filters/DateTime'
 import Toasted from 'vue-toasted';
 import Clipboard from 'v-clipboard'
 import Redirect from '@/views/Redirect'
+import PrivacyPolicy from '@/views/PrivacyPolicy'
 
 Vue.use(VueRouter)
 Vue.use(Toasted, {
@@ -24,6 +25,11 @@ const routes = [
     path: '/:token',
     name: 'Redirect',
     component: Redirect
+  },
+  {
+    path: '/politica-de-privacidade',
+    name: 'PrivacyPolicy',
+    component: PrivacyPolicy
   }
 ]
 

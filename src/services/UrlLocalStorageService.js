@@ -12,7 +12,6 @@ export default class UrlLocalStorageService {
 
   save(data) {
     data.reverse()
-    console.log(data)
     localStorage.setItem('links', JSON.stringify(data))
   }
 

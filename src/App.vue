@@ -4,7 +4,6 @@
       <router-link to="/">
         <img id="logoUnimine" src="@/assets/logo.png" alt="Logo Unimine">
       </router-link>
-      <p id="messageInsert">Insira sua Url que a encurtaremos para você :)</p>
     </header>
 
     <router-view class="content"/>
@@ -12,8 +11,8 @@
     <footer>
       <cookie-law theme="blood-orange" buttonText="Continuar e fechar">
         <div slot="message">
-          A gente usa cookies para personalizar anúncios e melhorar a sua experiência no site. 
-          Ao continuar navegando, você concorda com a nossa <strong>Política de Privacidade</strong>.
+          A plataforma Unimine usa cookies para personalizar anúncios e melhorar a sua experiência no site.
+          Ao continuar navegando, você concorda com a nossa <strong><router-link :to="{ name: 'PrivacyPolicy' }">Política de Privacidade</router-link></strong>.
         </div>
       </cookie-law>
       <p>Desenvolvido com todo amor e carinho por:</p>
@@ -80,10 +79,7 @@ header {
 #logoUnimine {
   margin-top: 10px;
   max-height: 141px;
-}
-
-#messageInsert {
-  margin-top: 32px;
+  max-width: 345px;
 }
 
 h4{
@@ -121,6 +117,11 @@ header {
   color: #f26139;
 }
 
+a {
+  text-decoration: none;
+  color: #E76A68;
+}
+
 footer {
   flex-shrink: 0;
   padding: 20px;
@@ -130,4 +131,10 @@ footer {
 footer cookie-law {
   text-align: justify;
 }
+
+@media (max-width: 576px) {
+    #logoUnimine {
+      width: 100%;
+    }
+  }
 </style>
