@@ -150,19 +150,19 @@ export default {
   border-radius: 10px 0 0 10px;
   border: 3px solid #F6A6A7;
   border-right: none;
-  height: 66px;
-  font-size: 24px;
+  height: 50px;
+  font-size: 30px;
   padding: 16px 23px;
 }
 
 #shortner {
-  padding: 15px;
+  padding: 5px;
   border-radius: 0 10px 10px 0;
   background-color: #E60004;
   border: 3px solid #E60004;
   color: #ffffff;
   font-size: 24px;
-  height: 66px;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -212,12 +212,13 @@ export default {
     width: 100%;
     border: 3px solid #F6A6A7;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 18px;
   }
 
   #shortner {
     border-radius: 10px;
     margin-top: 20px;
+    height: 50px;
     left: 0;
   }
 }
