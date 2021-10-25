@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       urlFixa: process.env.VUE_APP_BASE_URL,
-      whatsapp: 'whatsapp://send?text=',
+      whatsapp: 'https://wa.me/?text=',
       twitter: 'https://twitter.com/intent/tweet?text=',
       facebook: 'https://www.facebook.com/sharer/sharer.php?u=',
       telegram: 'https://t.me/share/url?url=',
